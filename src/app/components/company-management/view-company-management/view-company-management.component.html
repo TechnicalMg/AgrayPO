@@ -1,0 +1,66 @@
+<!-- view-company-management.component.html -->
+<div class="company-list-container">
+    <h2>Company Management Records</h2>
+    <table mat-table [dataSource]="companies" class="mat-elevation-z8 full-width-table">
+  
+      <!-- ID -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let company"> {{company.id}} </td>
+      </ng-container>
+  
+      <!-- Name -->
+      <ng-container matColumnDef="companyName">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let company"> {{company.companyName}} </td>
+      </ng-container>
+  
+      <!-- Registered Office -->
+      <ng-container matColumnDef="registeredOffice">
+        <th mat-header-cell *matHeaderCellDef> Registered Office </th>
+        <td mat-cell *matCellDef="let company"> {{company.registeredOffice}} </td>
+      </ng-container>
+  
+      <!-- Corporate Office -->
+      <ng-container matColumnDef="corporateOffice">
+        <th mat-header-cell *matHeaderCellDef> Corporate Office </th>
+        <td mat-cell *matCellDef="let company"> {{company.corporateOffice}} </td>
+      </ng-container>
+  
+      <!-- GSTIN -->
+      <ng-container matColumnDef="gstin">
+        <th mat-header-cell *matHeaderCellDef> GSTIN </th>
+        <td mat-cell *matCellDef="let company"> {{company.gstin}} </td>
+      </ng-container>
+  
+      <!-- PAN -->
+      <ng-container matColumnDef="pan">
+        <th mat-header-cell *matHeaderCellDef> PAN </th>
+        <td mat-cell *matCellDef="let company"> {{company.pan}} </td>
+      </ng-container>
+  
+      <!-- GEM ID -->
+      <ng-container matColumnDef="gemId">
+        <th mat-header-cell *matHeaderCellDef> GEM ID </th>
+        <td mat-cell *matCellDef="let company"> {{company.gemId}} </td>
+      </ng-container>
+  
+      <!-- E-Tender ID -->
+      <ng-container matColumnDef="eTenderId">
+        <th mat-header-cell *matHeaderCellDef> E-Tender ID </th>
+        <td mat-cell *matCellDef="let company"> {{company.eTenderId}} </td>
+      </ng-container>
+  
+      <!-- Logo Preview -->
+      <ng-container matColumnDef="logo">
+        <th mat-header-cell *matHeaderCellDef> Logo </th>
+        <td mat-cell *matCellDef="let company">
+          <img *ngIf="company.logo" [src]="'data:image/png;base64,' + company.logo" width="50" height="50" />
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+  

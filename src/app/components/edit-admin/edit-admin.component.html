@@ -1,0 +1,52 @@
+<!-- <div class="edit-container">
+    <h2>Edit Admin</h2>
+    <input type="text" placeholder="Enter Admin ID" [(ngModel)]="adminId">
+    <button (click)="loadAdmin()">Load Admin</button>
+  
+    <form *ngIf="admin.adminId" (ngSubmit)="updateAdmin()">
+      <input type="text" [(ngModel)]="admin.adminCompanyName" name="company" required>
+      <input type="text" [(ngModel)]="admin.adminName" name="name" required>
+      <input type="email" [(ngModel)]="admin.adminEmail" name="email" required>
+      <input type="text" [(ngModel)]="admin.adminUsername" name="username" required>
+      <input type="password" [(ngModel)]="admin.adminPassword" name="password" required>
+      <button type="submit">Update Admin</button>
+    </form>
+  </div>
+   -->
+
+   <div class="edit-container">
+    <div class="edit-header">
+      <h1>Edit Admin</h1>
+      <p class="subtitle animate">
+        Update existing admin details securely and efficiently by entering their ID below.
+      </p>
+    </div>
+  
+    <div class="search-section">
+      <input type="text" placeholder="Enter Admin ID" [(ngModel)]="adminId">
+      <button (click)="loadAdmin()">Load Admin</button>
+    </div>
+  
+    <!-- <form *ngIf="admin.adminId" (ngSubmit)="updateAdmin()" class="edit-form-card"> -->
+    <form *ngIf="admin" (ngSubmit)="updateAdmin()" class="edit-form-card">
+      <h3>Admin Information</h3>
+  
+      <label>Company Name</label>
+      <input type="text" [(ngModel)]="admin.adminCompanyName" name="company" required>
+  
+      <label>Admin Name</label>
+      <input type="text" [(ngModel)]="admin.adminName" name="name" required>
+  
+      <label>Email</label>
+      <input type="email" [(ngModel)]="admin.adminEmail" name="email" required>
+  
+      <label>Username</label>
+      <input type="text" [(ngModel)]="admin.adminUsername" name="username" required>
+  
+      <label>Password</label>
+      <input type="password" [(ngModel)]="admin.adminPassword" name="password" required>
+  
+      <button type="submit">Update Admin</button>
+    </form>
+  </div>
+  

@@ -1,0 +1,71 @@
+<!-- <div class="assignment-card" style="color: black;">
+    <h3>Assign Roles</h3>
+  
+    <label>Select User:</label>
+    <select [(ngModel)]="selectedUserId" (change)="onUserChange()">
+      <option value="">-- Select --</option>
+      <option *ngFor="let user of users" [value]="user.id">
+        {{ user.userName }}
+      </option>
+    </select>
+  
+    <div *ngIf="selectedUserId">
+      <h4>Available Roles</h4>
+      <div *ngFor="let menu of userMenus">
+        <label>
+          <input type="checkbox"
+                 [checked]="isChecked(menu.id)"
+                 (change)="toggleMenu(menu.id)" />
+          {{ menu.menuName }}
+        </label>
+      </div>
+  
+      <button (click)="saveAssignment()">Save</button>
+    </div>
+  </div>
+   -->
+
+
+
+   <div class="assignment-card">
+    <h3 class="title">Assign Roles</h3>
+  
+    <div class="user-select-section">
+      <label for="userSelect">Select User:</label>
+
+
+<!--       
+      <select id="userSelect" [(ngModel)]="selectedUserId" (change)="onUserChange()">
+        <option value="">-- Select --</option>
+        <option *ngFor="let user of users" [value]="user.id">
+          {{ user.userName }}
+        </option>
+      </select> -->
+      <ng-select
+  [items]="users"
+  bindLabel="userName"
+  bindValue="id"
+  placeholder="Select a user"
+  [(ngModel)]="selectedUserId"
+  (change)="onUserChange()"
+  [searchable]="true"
+  [clearable]="true">
+</ng-select>
+    </div>
+  
+    <div *ngIf="selectedUserId" class="roles-section">
+      <h4 class="subtitle">Available Roles</h4>
+      <div class="checkbox-container">
+        <div class="checkbox-item" *ngFor="let menu of userMenus">
+          <label>
+            <input type="checkbox"
+                   [checked]="isChecked(menu.id)"
+                   (change)="toggleMenu(menu.id)" />
+            {{ menu.menuName }}
+          </label>
+        </div>
+      </div>
+      <button class="save-btn" (click)="saveAssignment()">Save</button>
+    </div>
+  </div>
+  

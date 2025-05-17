@@ -1,0 +1,69 @@
+<div class=" dashboard content-container">
+  <!-- Header -->
+  <header class="header">
+    <h2>SuperAdmin Overview</h2>
+    <div class="user-profile">
+      <img src="assets/super_admin.png" alt="User">
+      <span>{{ username }}</span>
+    </div>
+  </header>
+  
+  <!-- Main Content Area -->
+  <main class="main-content">
+    <router-outlet></router-outlet>
+  </main>
+</div>
+<div class="dashboard">
+    <!-- Sidebar -->
+    <div class="sidebar" [class.collapsed]="isCollapsed">
+      <div class="logo">
+        <img src="assets/ignitialogofinal.png" alt="Logo" width="40" height="40">
+        <h1 *ngIf="!isCollapsed">IGNTIA Infotech</h1>
+      </div>
+      <ul class="nav-menu">
+        <li class="nav-item active">
+          <img src="assets/home.png" alt="Home" width="24" height="24">
+          <span *ngIf="!isCollapsed"><a routerLink="/dashboard/dashboard-right-side" routerLinkActive="active">Home</a></span>
+          <!-- <span *ngIf="!isCollapsed"><a routerLink="/dashboard/dashboard-login-test" routerLinkActive="active">Login Test</a></span> -->
+        </li>
+        <li class="nav-item">
+          <img src="assets/company.png" alt="Company" width="24" height="24">
+          <span *ngIf="!isCollapsed"><a routerLink="/dashboard/create-company" routerLinkActive="active">Create Company</a></span>
+        </li>
+        <li class="nav-item">
+          <img src="assets/profile.png" alt="Admin" width="24" height="24">
+          <span *ngIf="!isCollapsed"><a routerLink="/dashboard/create-admin">Create Admin</a></span>
+        </li>
+        <!-- <li class="nav-item">
+          <img src="eye.png" alt="View" width="24" height="24">
+          <span *ngIf="!isCollapsed"><a routerLink="/dashboard/view-admin">View Admin</a></span>
+        </li>
+        <li class="nav-item">
+          <img src="pen.png" alt="Edit" width="24" height="24">
+          <span *ngIf="!isCollapsed"><a routerLink="/dashboard/edit-admin">Edit Admin</a></span>
+        </li>
+        <li class="nav-item">
+          <img src="delete.png" alt="Delete" width="24" height="24">
+          <span *ngIf="!isCollapsed"><a routerLink="/delete-admin">Delete Admin</a></span>
+        </li> -->
+        <li class="nav-item">
+          <img src="assets/delete.png" alt="Delete" width="24" height="24">
+          <span *ngIf="!isCollapsed"><a routerLink="/delete-admin">Reports</a></span>
+        </li>
+        <li class="nav-item">
+          <img src="assets/checkout.png" alt="Signout" width="24" height="24">
+          <span *ngIf="!isCollapsed"><a (click)="logout()">Sign Out</a></span>
+        </li>
+      </ul>
+      
+      <!-- Sidebar Toggle Button -->
+      <div class="sidebar-toggle" (click)="toggleSidebar()">
+        <div class="toggle-line"></div>
+        <div class="toggle-line"></div>
+        <div class="toggle-line"></div>
+      </div>
+    </div>
+  
+    <!-- Main Content Container -->
+    
+  </div>

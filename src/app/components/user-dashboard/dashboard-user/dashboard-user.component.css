@@ -1,0 +1,206 @@
+.custom-sidenav-container {
+  height: 100vh;
+  background-color: #ffffff;
+}
+
+.custom-sidenav {
+  width: 240px;
+  background: linear-gradient(to bottom, #4facfe, #00f2fe);  /* Gradient colors */
+  transition: width 0.3s ease;
+  overflow-x: hidden;
+  border-top-right-radius: 24px;
+  border-bottom-right-radius: 24px;
+  box-shadow: 4px 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.custom-sidenav.collapsed {
+  width: 70px;
+}
+
+.sidenav-toggle {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+}
+
+.toggle-icon-btn {
+  color: #ffffff;
+}
+
+mat-nav-list a {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  color: #ffffff;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.3s ease;
+  border-radius: 32px;
+  margin: 4px 8px;
+}
+
+mat-nav-list a:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.nav-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.nav-text {
+  margin-left: 12px;
+}
+
+mat-sidenav-content {
+  transition: margin-left 0.3s ease;
+}
+
+mat-sidenav-content:not(.collapsed-content) {
+  margin-left: 240px;
+}
+
+mat-sidenav-content.collapsed-content {
+  margin-left: 70px;
+}
+
+.custom-toolbar {
+  background: linear-gradient(to right, #4facfe, #00f2fe);  /* Correct gradient colors */
+  color: white;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  border-radius: 0 0 24px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.toolbar-title {
+  margin: 0;
+  font-size: 20px;
+}
+
+.logout-btn {
+  background-color: #ff5252;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 32px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.logout-btn:hover {
+  background-color: #e63939;
+}
+
+.custom-main-content {
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.submenu-group {
+  /* display: flex; */
+  flex-direction: column;
+}
+
+.submenu-items {
+  padding-left: 48px;
+  /* display: flex; */
+  flex-direction: column;
+}
+
+.submenu-link {
+  font-size: 14px;
+  padding-left: 16px;
+}
+
+.submenu-text {
+  margin-left: 8px;
+}
+
+.submenu-arrow {
+  margin-left: auto;
+}
+
+/* 
+.round-button {
+  width: 40px;             adjust for smaller/larger size
+  height: 40px;
+  border-radius: 50%;      makes it perfectly round
+  background-color: #4CAF50; or your preferred color
+  color: white;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+.round-button:hover {
+  background-color: #45a049;
+} */
+
+
+
+.round-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  padding: 0;
+  border: none;
+  overflow: hidden;
+  /* background-color: transparent; */
+
+  background-color: #36b6da;  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.round-button img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* crop image to fit perfectly */
+}
+
+
+
+
+.overlay-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4); /* semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+
+
+.custom-dialog-container .mat-dialog-container {
+  border-radius: 16px;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  max-height: 200vh;
+  overflow-y: auto;
+}
+.company-logo {
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 12px;
+  background-color: #fff;
+  padding: 4px;
+}

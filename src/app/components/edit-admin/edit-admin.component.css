@@ -1,0 +1,140 @@
+.edit-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(to right, #e6f4ff, #ffffff);
+  min-height: 100vh;
+  padding: 50px 20px;
+  font-family: 'Segoe UI', sans-serif;
+  color: #1c1c1c;
+}
+
+.edit-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.edit-header h1 {
+  font-size: 2.2rem;
+  color: #003366;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #444;
+  opacity: 0.9;
+  animation: fadeIn 2s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.search-section {
+  background-color: #f0fbff;
+  border: 2px solid #007acc;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 6px 20px rgba(0, 128, 192, 0.15);
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 30px;
+}
+
+.search-section input {
+  flex-grow: 1;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1.5px solid #007acc;
+  font-size: 1rem;
+  background-color: #ffffff;
+  color: #000;
+}
+
+.search-section input:focus {
+  outline: none;
+  box-shadow: 0 0 8px #66ccff;
+}
+
+.search-section button {
+  padding: 10px 20px;
+  background-color: #007acc;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.search-section button:hover {
+  background-color: #005fa3;
+  transform: scale(1.05);
+}
+
+.edit-form-card {
+  background-color: #ffffff;
+  border-left: 6px solid #007acc;
+  border-radius: 16px;
+  padding: 30px 25px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 8px 25px rgba(0, 128, 192, 0.1);
+  animation: slideFadeIn 0.8s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.edit-form-card h3 {
+  margin-bottom: 16px;
+  color: #004080;
+  font-size: 1.3rem;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 8px;
+}
+
+.edit-form-card label {
+  font-weight: 600;
+  color: #003366;
+}
+
+.edit-form-card input {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1.5px solid #007acc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  color: #000;
+}
+
+.edit-form-card input:focus {
+  outline: none;
+  box-shadow: 0 0 6px #66ccff;
+}
+
+.edit-form-card button {
+  margin-top: 15px;
+  padding: 12px;
+  background-color: #007acc;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.edit-form-card button:hover {
+  background-color: #005fa3;
+  transform: translateY(-2px);
+}
+
+@keyframes slideFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

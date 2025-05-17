@@ -1,0 +1,84 @@
+.login-user-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .login-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .logo {
+    height: 40px;
+  }
+  
+  .title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #0047AB;
+  }
+  
+  .login-user-body {
+    background: #f1f4ff;
+    margin-top: 2rem;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .login-user-form h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #333;
+  }
+  
+  .login-user-form label {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-weight: 500;
+  }
+  
+  .login-user-form input,
+  .login-user-form select {
+    width: 100%;
+    padding: 0.6rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    color: #000;
+  }
+  
+  .login-user-form button {
+    width: 100%;
+    padding: 0.8rem;
+    background: #0047AB;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  .login-user-form button:hover {
+    background: #002e7d;
+  }
+  
+  .footer {
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: #777;
+  }
+  
+  .error {
+    color: red;
+    margin-top: 1rem;
+  }
+  

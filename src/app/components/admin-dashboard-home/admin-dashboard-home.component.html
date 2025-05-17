@@ -1,0 +1,114 @@
+<div class="dashboard-content">
+    <!-- Stats Cards -->
+    <div class="stats-container">
+      <div class="stat-card">
+        <i class="fas fa-building"></i>
+        <h3>{{ AdmindashboardStats.totalUsers }}</h3>
+        <p>Total Users</p>
+      </div>
+      <div class="stat-card">
+        <i class="fas fa-user-shield"></i>
+        <h3>{{ AdmindashboardStats.totalUserMenus }}</h3>
+        <p>Total Roles</p>
+      </div>
+        <!-- <div class="stat-card">
+            <i class="fas fa-users"></i>
+            <h3>{{ dashboardStats.activeCompanies }}</h3>
+            <p>Active Companies</p>
+        </div>
+        <div class="stat-card">
+            <i class="fas fa-chart-line"></i>
+            <h3>{{ dashboardStats.inactiveCompanies }}</h3>
+            <p>In-Active Companies</p>
+        </div> -->
+    </div>
+  
+    
+  
+
+
+    <!-- <div class="table-container" *ngIf="adminList && adminList.length > 0; else noData"> -->
+      <div class="scrolling-container">
+
+      
+      <div class="table-container" >
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>S No.</th>
+            <!-- <th>Company Id</th> -->
+            <th>User Name</th>
+            <th>Roles Assigned</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- <tr *ngFor="let admin of adminList;let i=index"> -->
+
+            <!-- old table data getting all the detaisl from admin -->
+          <!-- <tr *ngFor="let admin of adminList; let i = index"> -->
+
+<!-- new getting from two tables admin and company -->
+            
+<!-- <tr *ngFor="let admin of adminList; let i = index" [ngClass]="{'inactive': !admin.isActive}"> -->
+
+  <!-- <tr *ngFor="let admin of userList; let i = index" > -->
+  <tr *ngFor="let assignment of AdmindashboardStats.assignments; let i = index" >
+    
+            <td>{{ i + 1 }}</td>
+            <!-- <td>{{adminList.companyId}}</td> -->
+            <!-- console.log("company name",admin.companyName); -->
+            <td>{{ assignment.userName }}</td>
+            <td>{{ assignment.menuNames.join(', ') }}</td>
+            
+           
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+      </div>
+
+
+    <!-- Charts -->
+    <!-- <div class="charts-container" style="color: red;">
+      <div class="chart-card">
+        <h3>Sales Overview</h3>
+        <div class="chart">
+          <div class="bar-chart" style="color: black;">
+            <div class="bar bar-1" data-value="$3.5k"></div>
+            <div class="bar bar-2" data-value="$2.5k"></div>
+            <div class="bar bar-3" data-value="$4.0k"></div>
+            <div class="bar bar-4" data-value="$3.0k"></div>
+            <div class="bar bar-5" data-value="$2.0k"></div>
+            <div class="bar bar-6" data-value="$4.5k"></div>
+          </div>
+        </div>
+      </div>
+      <div class="chart-card">
+        <h3>Revenue Sources</h3>
+        <div class="chart">
+          <div class="pie-chart"></div>
+          <div class="chart-legend">
+            <div class="legend-item">
+              <div class="legend-color color-1"></div>
+              <span>Products</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color color-2"></div>
+              <span>Services</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color color-3"></div>
+              <span>Subscriptions</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color color-4"></div>
+              <span>Other</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+
+  </div>

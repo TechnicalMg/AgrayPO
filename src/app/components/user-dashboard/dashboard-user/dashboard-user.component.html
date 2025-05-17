@@ -1,0 +1,88 @@
+<mat-sidenav-container class="custom-sidenav-container">
+  <mat-sidenav #drawer class="custom-sidenav" fixedInViewport [mode]="'side'" [opened]="true" [ngClass]="{ 'collapsed': !isExpanded }">
+    <div class="sidenav-toggle">
+      <button mat-icon-button (click)="toggleSidenav()" class="toggle-icon-btn">
+        <mat-icon>{{ isExpanded ? 'chevron_left' : 'chevron_right' }}</mat-icon>
+      </button>
+    </div>
+
+    <mat-nav-list>
+      <a mat-list-item routerLink="/dashboard-user/user-dashboard-home" matTooltip="Dashboard Home">
+        <img src="assets/user-dashboard-icons/home-agreement.png" alt="Home" class="nav-icon" />
+        <span *ngIf="isExpanded" class="nav-text">Home</span>
+      </a>
+
+      <!-- <a mat-list-item routerLink="/dashboard-user/purchase-order" matTooltip="Purchase Order">
+        <img src="assets/user-dashboard-icons/ecommerce.png" alt="PO" class="nav-icon" />
+        <span *ngIf="isExpanded" class="nav-text">Customer PO</span>
+      </a> -->
+
+
+      <div class="submenu-group">
+        <!-- <a mat-list-item (click)="isCustomerPoExpanded = !isCustomerPoExpanded" matTooltip="Purchase Order"> -->
+        <a mat-list-item  matTooltip="Purchase Order">
+          <img src="assets/user-dashboard-icons/ecommerce.png" alt="PO" class="nav-icon" />
+          <span *ngIf="isExpanded" class="nav-text">Customer PO</span>
+          <!-- <mat-icon class="submenu-arrow" *ngIf="isExpanded">{{ isCustomerPoExpanded ? 'expand_less' : 'expand_more' }}</mat-icon> -->
+          <mat-icon class="submenu-arrow"></mat-icon> 
+        </a>
+      
+        <!-- <div *ngIf="isCustomerPoExpanded && isExpanded" class="submenu-items"> -->
+        <div  class="submenu-items">
+          <a mat-list-item routerLink="/dashboard-user/purchase-order" class="submenu-link">
+            <span class="submenu-text">Received PO</span>
+          </a>
+          <a mat-list-item routerLink="/dashboard-user/view-purchase-order" class="submenu-link">
+            <span class="submenu-text">View PO</span>
+          </a>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <!-- <a mat-list-item routerLink="/dashboard-user/view-purchase-order" matTooltip="View PO">
+        <img src="assets/user-dashboard-icons/checklist.png" alt="View PO" class="nav-icon" />
+        <span *ngIf="isExpanded" class="nav-text">View Purchase Orders</span>
+      </a> -->
+
+      <!-- <a mat-list-item routerLink="/dashboard-admin/admin-reports" matTooltip="Reports">
+        <img src="assets/user-dashboard-icons/bar-chart.png" alt="Reports" class="nav-icon" />
+        <span *ngIf="isExpanded" class="nav-text">Reports</span>
+      </a> -->
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content [ngClass]="{ 'collapsed-content': !isExpanded }">
+    <mat-toolbar class="custom-toolbar">
+      <img  [src]="logoUrl" class="company-logo" alt="Logo" />
+      <div class="toolbar-left">
+        
+        <h1 class="toolbar-title">{{companyName}} </h1>
+      </div>  
+     
+      <button class="round-button" style="margin-left: auto;"   (click)="openProfileOverlay()" >  <img src="assets/user_profile.png" alt="Profile" width="32" height="32">
+      </button>
+      <!-- <button class="round-button" style="margin-left: 78%;"   routerLink="/view-user-profile" >  <img src="assets/user_profile.png" alt="Profile" width="32" height="32">
+      </button> -->
+      <button class="logout-btn" (click)="logout()">Logout</button>
+    
+    </mat-toolbar>
+
+    <div class="custom-main-content">
+      <router-outlet></router-outlet>
+      
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+

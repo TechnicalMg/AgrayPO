@@ -1,0 +1,69 @@
+.user-dashboard-container {
+    display: flex;
+    height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .sidebar {
+    width: 220px;
+    background-color: #003f5c;
+    color: white;
+    padding: 20px;
+  }
+  
+  .sidebar .logo {
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+  
+  .sidebar nav a {
+    display: block;
+    margin: 15px 0;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  
+  .sidebar nav a.active,
+  .sidebar nav a:hover {
+    background-color: #2f4b7c;
+  }
+  
+  .main-content {
+    flex: 1;
+    background: #f0f4f8;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .topbar {
+    background-color: white;
+    padding: 15px 25px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .topbar .username {
+    font-weight: bold;
+    color: #003f5c;
+  }
+  
+  .topbar button {
+    background: #ef476f;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .content-body {
+    padding: 30px;
+    overflow-y: auto;
+    flex-grow: 1;
+  }
+  

@@ -1,0 +1,60 @@
+<div class="container1">
+  <div class="form-header">
+    <h1>Profile</h1>
+  </div>
+
+  <div class="company-form-container">
+    <div class="form-card">
+
+      <div class="form-group">
+        <label>User Name <span class="required">*</span></label>
+        <input type="text" [(ngModel)]="user.userName" placeholder="Username" class="form-control" />
+      </div>
+
+      <div class="form-group">
+        <label>Email <span class="required">*</span></label>
+        <input type="text" [(ngModel)]="user.userEmail" [disabled]="true" placeholder="Enter Email" class="form-control" />
+      </div>
+
+      <div class="form-group">
+        <label>Designation <span class="required">*</span></label>
+        <input type="text" [(ngModel)]="user.designation" placeholder="Designation" class="form-control" />
+      </div>
+
+      <div class="form-group">
+        <label>Phone Number <span class="required">*</span></label>
+        <input type="text" [(ngModel)]="user.phoneNumber" placeholder="Phone Number" maxlength="10" class="form-control" />
+      </div>
+
+      <!-- <button (click)="showUserId()">SHow user id</button> -->
+
+      <!-- Toggle to show/hide change password fields -->
+      <p (click)="toggleChangePassword()" class="change-password-toggle">
+        {{ showChangePassword ? 'Cancel Password Change' : 'Change Password' }}
+      </p>
+
+      <!-- Conditionally show password fields -->
+      <div *ngIf="showChangePassword">
+        <div class="form-group">
+          <label>New Password <span class="required">*</span></label>
+          <input type="password" [(ngModel)]="user.password" (blur)="validatePassword()" placeholder="New Password" class="form-control" />
+          <p style="color: #ff4877;" *ngIf="passwordError">{{ passwordError }}</p>
+        </div>
+
+        <div class="form-group">
+          <label>Confirm New Password <span class="required">*</span></label>
+          <input type="password" [(ngModel)]="user.confirmPassword" placeholder="Confirm New Password" class="form-control" />
+        </div>
+      </div>
+
+      <!-- Current Password required before update -->
+      <div class="form-group">
+        <label>Current Password <span class="required">*</span></label>
+        <input type="password" [(ngModel)]="currentPassword" placeholder="Password mandatory for updation" class="form-control" />
+      </div>
+
+      <button class="action-btn" (click)="onSubmit()">Update</button>
+      <!-- <button class="action-btn" >Update</button> -->
+    </div>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+<mat-sidenav-container class="layout-container">
+  <mat-sidenav #drawer
+               class="sidenav"
+               fixedInViewport
+               [mode]="'side'"
+               [opened]="true"
+               [ngClass]="{ 'collapsed': !isExpanded }">
+
+    <div class="sidenav-toggle">
+      <button mat-icon-button (click)="toggleSidenav()" class="toggle-button">
+        <img src="assets/ignitialogofinal.png" alt="Logo" class="logo" width="40" height="40">
+      </button>
+    </div>
+
+    <div class="sidenav-scroll">
+      <!-- <h1 *ngIf="isExpanded" class="app-title">Ignitia</h1> -->
+
+      <mat-nav-list>
+        <a mat-list-item routerLink="/side-nav/right-side" matTooltip="Dashboard Home">
+          <img src="assets/user-dashboard-icons/home-agreement.png" alt="Home" width="24" height="24">&nbsp;&nbsp;
+          <span *ngIf="isExpanded" class="nav-text">Home</span>
+        </a>
+        <a mat-list-item routerLink="/side-nav/create-company" matTooltip="Create Company">
+          <img src="assets/company2.png" alt="Create Company" width="24" height="24">&nbsp;&nbsp;
+          <!-- <img src="assets/company2.png" alt="Reports" class="nav-icon" /> -->
+          <span *ngIf="isExpanded" class="nav-text">Create Company</span>
+        </a>
+        <a mat-list-item routerLink="/side-nav/create-admin" matTooltip="Create Admin">
+          <img src="assets/dadmin2.png" alt="Create Admin" width="24" height="24">&nbsp;&nbsp;
+          <!-- <img src="assets/dadmin2.png" alt="Reports" class="nav-icon" /> -->
+          <span *ngIf="isExpanded" class="nav-text">Create Admin</span>
+        </a>
+      </mat-nav-list>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content [ngClass]="{ 'collapsed-content': !isExpanded }">
+    <mat-toolbar class="top-toolbar">
+      <div class="left-section">
+        <h1 class="welcome-text">SuperAdmin</h1>
+      </div>
+      <button class="logout-button" (click)="logout()">Logout</button>
+    </mat-toolbar>
+
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

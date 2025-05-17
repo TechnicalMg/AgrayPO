@@ -1,0 +1,57 @@
+<div class="container1">
+  <div class="form-header">
+    <!-- <h1>Create User</h1> -->
+  </div>
+
+  <div class="company-form-container">
+    <div class="form-card">
+      <form [formGroup]="adminForm" (ngSubmit)="onSubmit()" class="admin-form">
+        <fieldset class="address-section">
+          <legend>Create Admin</legend>
+
+          <div class="form-group">
+            <label>Company <span class="required">*</span></label>
+            <select formControlName="companyName" (change)="onCompanyChange($event)">
+              <option value="">Select Company</option>
+              <option *ngFor="let company of companies" [value]="company.companyName">{{ company.companyName }}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Admin Name <span class="required">*</span></label>
+            <input type="text" formControlName="adminName" placeholder="Admin Name" />
+          </div>
+
+          <div class="form-group">
+            <label>Email <span class="required">*</span></label>
+            <input type="text" formControlName="adminEmail" placeholder="Enter email" maxlength="50" />
+            <!-- <div *ngIf="adminForm.get('adminEmail')?.hasError('required')" style="color: #ff4877;">Email is required.</div>
+            <div *ngIf="adminForm.get('adminEmail')?.hasError('adminEmail')" style="color: #ff4877;">Please enter a valid email address.</div> -->
+          </div>
+          <div *ngIf="adminForm.get('adminEmail')?.hasError('required')" style="color: #ff4877;   margin-left: 150px;
+    margin-top: -14px;">Email is required.</div>
+          <div *ngIf="adminForm.get('adminEmail')?.hasError('adminEmail')" style="color: #ff4877;   margin-left: 150px;
+    margin-top: -14px;">Please enter a valid email address.</div>
+          <div class="form-group">
+            <label>Phone No. <span class="required">*</span></label>
+            <input type="text" formControlName="phoneNumber" maxlength="10" placeholder="Phone No." />
+          </div>
+
+          <div class="form-group">
+            <label>Password <span class="required">*</span></label>
+            <input type="password" formControlName="password" maxlength="20" minlength="8" placeholder="Password" />
+            <!-- <p style="color: #ff4877;">Password must be 8–20 characters, including uppercase, lowercase, number & symbol.</p> -->
+          </div>
+          <p style="color: #ff4877; margin-left: 150px;
+    margin-top: -14px; ">Password must be 8–20 characters, including uppercase, lowercase, number & symbol.</p>
+          <div class="form-group">
+            <label>Confirm Password <span class="required">*</span></label>
+            <input type="password" formControlName="confirmPassword" placeholder="Confirm Password" />
+          </div>
+
+          <button type="submit" class="submit-btn">Save</button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>

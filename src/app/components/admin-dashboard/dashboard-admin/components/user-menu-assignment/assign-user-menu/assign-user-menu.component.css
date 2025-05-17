@@ -1,0 +1,140 @@
+.assignment-card {
+    max-width: 600px;
+    margin: 30px auto;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', sans-serif;
+    color: #333;
+  }
+  
+  .title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 22px;
+  }
+  
+  .user-select-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 25px;
+  }
+  
+  .user-select-section label {
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  
+  select {
+    width: 70%;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+  }
+  
+  .roles-section {
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid #ddd;
+  }
+  
+  .subtitle {
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: 600;
+  }
+  
+  .checkbox-container {
+    max-height: 200px;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+    padding: 10px;
+  }
+  
+  .checkbox-item label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+  
+  .checkbox-item label:hover {
+    background-color: #eef5ff;
+  }
+  
+  .save-btn {
+    display: block;
+    margin: 20px auto 0;
+    padding: 10px 20px;
+    background-color: #1976d2;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-size: 14px;
+  }
+  
+  .save-btn:hover {
+    background-color: #0d47a1;
+  }
+  
+
+
+  /* Make ng-select input bigger with rounded corners and padding */
+ng-select {
+  width: 100%;
+  font-size: 1rem;
+  min-height: 45px;
+  border-radius: 8px;
+  border: 1px solid black;
+}
+
+/* Style the main control */
+ng-select .ng-select-container {
+  border: 1px solid #3f51b5; /* blue border */
+  border-radius: 8px;
+  padding: 6px 10px;
+  background-color: #f9faff;
+  box-shadow: none;
+  transition: border 0.2s ease;
+}
+
+/* On focus */
+ng-select.ng-select-focused .ng-select-container {
+  border-color: #1a237e;
+  box-shadow: 0 0 0 2px rgba(63, 81, 181, 0.2);
+}
+
+/* Style dropdown items */
+ng-select .ng-option {
+  padding: 10px;
+  font-size: 0.95rem;
+}
+
+/* Hover effect */
+ng-select .ng-option:hover {
+  background-color: #e3f2fd;
+}
+
+/* Selected item styling */
+ng-select .ng-option-selected {
+  background-color: #c5cae9;
+  font-weight: bold;
+}
+
+/* Placeholder text style */
+ng-select .ng-placeholder {
+  color: #888;
+}

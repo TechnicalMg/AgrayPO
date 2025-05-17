@@ -1,0 +1,28 @@
+<div class="user-dashboard-container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h2 class="logo">AGRAY ERP</h2>
+      <nav>
+        <a routerLink="home" routerLinkActive="active">Home</a>
+        <a routerLink="purchase-order" routerLinkActive="active">Purchase Order</a>
+        <a>HR</a>
+        <a>ACCOUNTS</a>
+        <a>SALES</a>
+      </nav>
+    </div>
+  
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Top Bar -->
+      <div class="topbar">
+        <span class="username">Welcome, {{ username }}</span>
+        <button (click)="logout()">Logout</button>
+      </div>
+  
+      <!-- Routed Pages -->
+      <div class="content-body">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+  

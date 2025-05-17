@@ -1,0 +1,42 @@
+<!-- <div class="view-container">
+    <h2>View Admin</h2>
+    <input type="text" placeholder="Enter Admin ID" [(ngModel)]="adminId">
+    <button (click)="fetchAdmin()">Search</button>
+  
+    <div *ngIf="admin" class="admin-details">
+      <p><strong>Company Name:</strong> {{ admin.adminCompanyName }}</p>
+      <p><strong>Admin Name:</strong> {{ admin.adminName }}</p>
+      <p><strong>Email:</strong> {{ admin.adminEmail }}</p>
+      <p><strong>Username:</strong> {{ admin.adminUsername }}</p>
+    </div>
+  </div>
+   -->
+
+   <div class="view-container">
+    <div class="view-header">
+      <h1>View Admin Details</h1>
+      <p class="subtitle animate">Quickly retrieve admin information using their unique ID below.</p>
+    </div>
+  
+    <div class="search-section">
+      <input type="text" placeholder="Enter Admin ID" [(ngModel)]="adminId">
+      <button (click)="fetchAdmin()">Search</button>
+    </div>
+  
+    <div *ngIf="admin" class="admin-details-card">
+      <h3>Admin Information</h3>
+      <div class="detail-row">
+        <strong>Company Name:</strong> <span>{{ admin.adminCompanyName }}</span>
+      </div>
+      <div class="detail-row">
+        <strong>Admin Name:</strong> <span>{{ admin.adminName }}</span>
+      </div>
+      <div class="detail-row">
+        <strong>Email:</strong> <span>{{ admin.adminEmail }}</span>
+      </div>
+      <div class="detail-row">
+        <strong>Username:</strong> <span>{{ admin.adminUsername }}</span>
+      </div>
+    </div>
+  </div>
+  

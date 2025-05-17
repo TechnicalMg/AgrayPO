@@ -1,0 +1,60 @@
+<div class="bodygrey">
+
+
+<div class="container">
+    <div class="backbox">
+      <div class="loginMsg">
+        <div class="textcontent">
+          <p class="title">Create Company?</p>
+          <p>Cliclk here for Company Creation.</p>
+          <button id="switch1">Create Company</button>
+        </div>
+      </div>
+      <div class="signupMsg visibility">
+        <div class="textcontent">
+          <p class="title">Create Admin?</p>
+          <p>click here for Admin Creation.</p>
+          <button id="switch2">Create Admin</button>
+        </div>
+      </div>
+    </div>
+  
+    <div class="frontbox">
+      <div class="login">
+        <h2>Create Admin</h2>
+        <div class="inputbox">
+          <div class="dropdown">
+
+            <label>Company <span class="required">*</span></label>
+            <select [(ngModel)]="formData.company" name="company" required>
+              <option value="" disabled selected>Select Company</option>
+              <option *ngFor="let company of companies" [value]="company.companyName">
+                {{ company.companyName }}
+              </option>
+            </select>
+            
+          </div>
+          
+          <!-- <input type="text" name="Admin Name" placeholder="Admin Name" [(ngModel)]="field1" placeholder="Field 1"> -->
+          <input type="text" name="Admin Name"  [(ngModel)]="field1" placeholder="Field 1">
+          <!-- <input type="password" name="password" placeholder="  PASSWORD"> -->
+        </div>
+        <!-- <p>FORGET PASSWORD?</p> -->
+        <!-- <button>LOG IN</button> -->
+        <button (click)="onSubmitAdmin()">Next</button>
+      </div>
+  
+      <div class="signup hide">
+        <h2>Company Management</h2>
+        <div class="inputbox">
+          
+          <Label style="color: red;">*</Label><input type="text"   [(ngModel)]="formData.field1" name="field1" placeholder="Company Name" required>
+          <input type="text" [(ngModel)]="formData.field2" name="field2" placeholder="  PAN" required>
+          <input type="password" name="password" placeholder="  GSTIN" required>
+        </div>
+        <!-- <button>SIGN UP</button> -->
+        <button (click)="onSubmit()">Next</button>
+      </div>
+    </div>
+  </div>
+</div>

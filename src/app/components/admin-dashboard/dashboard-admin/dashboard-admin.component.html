@@ -1,0 +1,48 @@
+<mat-sidenav-container class="layout-container">
+  <mat-sidenav #drawer class="sidenav" [mode]="'side'" [opened]="true" [ngClass]="{ 'collapsed': !isExpanded }">
+    <div class="sidenav-toggle">
+      <button mat-icon-button (click)="toggleSidenav()">
+        <mat-icon>{{ isExpanded ? 'chevron_left' : 'chevron_right' }}</mat-icon>
+      </button>
+    </div>
+
+    <div class="sidenav-scroll">
+      <mat-nav-list>
+        <a mat-list-item routerLink="/dashboard-admin/admin-dashboard-home">
+          <img src="assets/admin-dashboard-icons/home-agreement.png" alt="Home" width="24" height="24">&nbsp;&nbsp;
+
+          <span *ngIf="isExpanded">Dashboard</span>
+        </a>
+        <a mat-list-item routerLink="/dashboard-admin/create-user">
+          <img src="assets/admin-dashboard-icons/add-group.png" alt="Home" width="24" height="24">&nbsp;&nbsp;
+          <span *ngIf="isExpanded">Create User</span>
+        </a>
+        <a mat-list-item routerLink="/dashboard-admin/create-roleMenu">
+          <img src="assets/admin-dashboard-icons/menu-button.png" alt="Home" width="24" height="24">&nbsp;&nbsp;
+
+          <span *ngIf="isExpanded">Create Role</span>
+        </a>
+        <a mat-list-item routerLink="/dashboard-admin/view-user-Menu">
+          <img src="assets/admin-dashboard-icons/choice.png" alt="Home" width="28" height="28" >&nbsp;&nbsp;
+          <span *ngIf="isExpanded">Role Management</span>
+        </a>
+      </mat-nav-list>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar class="top-toolbar">
+      <div class="toolbar-left">
+        <!-- <img *ngIf="logoUrl" [src]="logoUrl" class="company-logo" alt="Logo" /> -->
+        <img  [src]="logoUrl" class="company-logo" alt="Logo" />
+        <!-- <span class="company-text">Welcome, {{ userName }} – {{ companyName }}</span> -->
+        <span class="company-text"> {{ companyName }}</span>
+      </div>
+      <button mat-raised-button color="warn" (click)="logout()">Logout</button>
+    </mat-toolbar>
+
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

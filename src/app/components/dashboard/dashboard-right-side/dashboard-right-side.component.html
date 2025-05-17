@@ -1,0 +1,161 @@
+  
+
+      <!-- <div class="dashboard-content"> -->
+      <div class="dashboard-content">
+        <!-- Stats Cards -->
+        <div class="stats-container">
+          <div class="stat-card">
+            <i class="fas fa-building"></i>
+            <h3>{{ dashboardStats.totalCompanies }}</h3>
+            <p>Total Company</p>
+          </div>
+          <div class="stat-card">
+            <i class="fas fa-user-shield"></i>
+            <h3>{{ dashboardStats.totalAdmins }}</h3>
+            <p>Total Admins</p>
+          </div>
+          <div class="stat-card">
+            <i class="fas fa-users"></i>
+            <h3>{{ dashboardStats.activeCompanies }}</h3>
+            <p>Active Companies</p>
+          </div>
+          <div class="stat-card">
+            <i class="fas fa-chart-line"></i>
+            <h3>{{ dashboardStats.inactiveCompanies }}</h3>
+            <p>In-Active Companies</p>
+          </div>
+        </div>
+      
+        
+      
+  
+  
+        <!-- <div class="table-container" *ngIf="adminList && adminList.length > 0; else noData"> -->
+          <div class="scrolling-container">
+  
+          
+          <div class="table-container" >
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Serial No.</th>
+                <th>Company Id</th>
+                <th>Company Name</th>
+                <th>Email</th>
+                <th>User Name</th>
+                <th>User Type</th>
+                <th>Options</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- <tr *ngFor="let admin of adminList;let i=index"> -->
+  
+                <!-- old table data getting all the detaisl from admin -->
+              <!-- <tr *ngFor="let admin of adminList; let i = index"> -->
+  
+    <!-- new getting from two tables admin and company -->
+                
+    <!-- <tr *ngFor="let admin of adminList; let i = index" [ngClass]="{'inactive': !admin.isActive}"> -->
+  
+      <tr *ngFor="let admin of adminList; let i = index" [ngClass]="{'inactive': admin.isActive === 'Inactive'}">
+        
+                <td>{{i+1}}</td>
+                <!-- <td>{{adminList.companyId}}</td> -->
+                <!-- console.log("company name",admin.companyName); -->
+                <td>{{admin.companyId}}</td>
+                <td>{{admin.companyName}}</td>
+                <td>{{admin.userEmail}}</td>
+                <td>{{admin.userName}}</td>
+                <td>{{admin.userType}}</td>
+                <!-- <td>{{admin.companyName}}</td> -->
+
+
+
+                <!-- <td>{{admin.companyId}}</td>
+                <td>{{admin.adminName}}</td> -->
+                
+                <td class="options-cell">
+  
+                  <button class="btn-edit" (click)="activateCompany(admin.companyId)"   [disabled]="admin.isActive">Activate</button>
+                  <button class="btn-delete" (click)="deactivateCompany(admin.companyId)"   [disabled]="!admin.isActive">Deactivate</button>
+                  <button class="btn-view" (click)="openView(admin.companyId)">View</button>
+  
+  
+                </td>
+              </tr>
+  
+            </tbody>
+          </table>
+        </div>
+          </div>
+  
+  
+        <!-- Charts -->
+        <!-- <div class="chart-container">
+          <h2>Company Status Overview</h2>
+          <canvas baseChart
+                  [data]="pieChartData"
+                  [labels]="pieChartLabels"
+                  [chartType]="pieChartType"
+                  [options]="pieChartOptions"
+
+                  [legend]="pieChartLegend">
+          </canvas>
+        </div> -->
+
+
+
+        <div class="chart-container">
+          <canvas #pieCanvas></canvas>
+        </div>
+        
+
+
+
+        <!-- <div class="charts-container" style="color: red;">
+          <div class="chart-card">
+            <h3>Sales Overview</h3>
+            <div class="chart">
+              <div class="bar-chart" style="color: black;">
+                <div class="bar bar-1" data-value="$3.5k"></div>
+                <div class="bar bar-2" data-value="$2.5k"></div>
+                <div class="bar bar-3" data-value="$4.0k"></div>
+                <div class="bar bar-4" data-value="$3.0k"></div>
+                <div class="bar bar-5" data-value="$2.0k"></div>
+                <div class="bar bar-6" data-value="$4.5k"></div>
+              </div>
+            </div>
+          </div>
+          <div class="chart-card">
+            <h3>Revenue Sources</h3>
+            <div class="chart">
+              <div class="pie-chart"></div>
+              <div class="chart-legend">
+                <div class="legend-item">
+                  <div class="legend-color color-1"></div>
+                  <span>Products</span>
+                </div>
+                <div class="legend-item">
+                  <div class="legend-color color-2"></div>
+                  <span>Services</span>
+                </div>
+                <div class="legend-item">
+                  <div class="legend-color color-3"></div>
+                  <span>Subscriptions</span>
+                </div>
+                <div class="legend-item">
+                  <div class="legend-color color-4"></div>
+                  <span>Other</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+  
+  
+      </div>
+  
+  
+  
+  
+  

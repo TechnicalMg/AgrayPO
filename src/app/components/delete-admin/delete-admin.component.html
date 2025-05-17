@@ -1,0 +1,26 @@
+<!-- <div class="delete-container">
+    <h2>Delete Admin</h2>
+    <select [(ngModel)]="selectedAdminId">
+      <option *ngFor="let id of adminIds" [value]="id">{{ id }}</option>
+    </select>
+    <button (click)="deleteAdmin()">Delete</button>
+  </div>
+   -->
+
+   <div class="delete-container">
+    <div class="delete-header">
+      <h2>Delete Admin</h2>
+      <p class="warning-text">⚠️ Please proceed carefully. This action cannot be undone.</p>
+    </div>
+  
+    <div class="delete-card">
+      <label for="adminSelect">Select Admin ID:</label>
+      <select id="adminSelect" [(ngModel)]="selectedAdminId">
+        <option *ngFor="let id of adminIds" [value]="id">{{ id }}</option>
+      </select>
+  
+      <button (click)="deleteAdmin()">Delete Admin</button>
+      <p class="note">Ensure you're selecting the correct admin before deleting.</p>
+    </div>
+  </div>
+  

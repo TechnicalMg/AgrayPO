@@ -1,0 +1,297 @@
+
+<!-- -----latest frsh code 2----- -->
+<!-- <div class="container1"> -->
+  <!-- <div class="form-header">
+    <h1>Company Management checkbox to repeat corporate address to registered address</h1>
+  </div> -->
+  
+
+
+
+  <div class="company-form-container">
+
+    <form [formGroup]="companyForm" (ngSubmit)="onSubmit()" class="admin-form">
+    <div class="left-side-form">
+      <fieldset class="address-section">
+        <legend>Company Details</legend>
+      <div class="form-group1">
+        <label for="companyName">Company Name <span class="required">*</span></label>
+        <input type="text" id="companyName" formControlName="companyName" placeholder="Enter company name" maxlength="50">
+        <div class="validation-message" *ngIf="companyForm.get('companyName')?.errors" style="color: #ff4877;">
+          Company name is required
+        </div>
+        <div *ngIf="companyForm.get('companyName')?.hasError('maxlength') && companyForm.get('companyName')?.touched" style="color: #ff4877;">
+          Text cannot be more than 50 characters.
+        </div>
+      </div>
+
+      <!-- PAN CARD DETAILS -->
+      <div class="form-group1">
+        
+        <label for="pan">Pan No. <span class="required">*</span></label>
+        <input type="text" id="pan" formControlName="panNumber" placeholder="Enter pan number" maxlength="10" 
+        style="text-transform: uppercase;" (input)="toUppercase('panNumber')" >
+        
+        <div *ngIf="companyForm.get('panNumber')?.touched && companyForm.get('panNumber')?.invalid">
+          <small *ngIf="companyForm.get('panNumber')?.errors?.['required']" style="color: #ff4877;">PAN Number is required.</small>
+          <small *ngIf="companyForm.get('panNumber')?.errors?.['pattern']" style="color: #ff4877;">Invalid PAN Number format.</small>
+        </div>
+        
+      </div>
+
+      <!-- Email Field with Validation -->
+      <div class="form-group1">
+        
+        <label for="email">Email <span class="required">*</span></label>
+        <input type="text" id="email" formControlName="email" placeholder="Enter email" maxlength="50">
+        <div *ngIf="companyForm.get('email')?.hasError('required') && companyForm.get('email')?.touched" style="color: #ff4877;">
+          Email is required.
+        </div>
+        <div *ngIf="companyForm.get('email')?.hasError('email') && companyForm.get('email')?.touched" style="color: #ff4877;">
+          Please enter a valid email address.
+        </div>
+      </div>
+
+      <!-- GSTIN Field with Validation -->
+      <div class="form-group1">
+        <label for="gstin">GSTIN <span class="required">*</span></label>
+        <input type="text" id="gstin" formControlName="gstin" placeholder="Enter GSTIN number" maxlength="15">
+        <div class="validation-message" *ngIf="companyForm.get('gstin')?.errors" style="color: #ff4877;">
+          Valid GSTIN is required
+        </div>
+        <div *ngIf="companyForm.get('gstin')?.hasError('gstin') && companyForm.get('gstin')?.touched" style="color: #ff4877;">
+          Please enter a valid GSTIN.
+        </div>
+      </div>
+
+       <!-- Etenderid Field with Validation -->
+       <div class="form-group1">
+        <label for="etenderId">eTenderID </label>
+        <input type="text" id="etenderid" formControlName="etenderId" placeholder="Enter ETender ID">
+        <!-- <div class="validation-message" *ngIf="companyForm.get('et')?.errors">
+          Valid EtenderID is required
+        </div> -->
+      </div>
+
+
+      
+      <!-- File Upload Section -->
+      <div class="form-group1">
+        <label class="upload-label">
+          Company Logo
+          <div class="upload-preview">
+            <img *ngIf="logoPreview" [src]="logoPreview" alt="Logo Preview">
+            <div *ngIf="!logoPreview" class="upload-placeholder">
+              <span>Click to upload logo</span>
+            </div>
+          </div><p style="font-size: 11px;
+    color: #ff4877;">Note:Image size should be less than 500kb and format should be .jpg or .png</p>
+    <br><p style="font-size: 11px;color: #ff4877; margin-top: -31px">Size :200x200 pixels </p>
+    <!-- <input type="file" accept="image/*" (change)="onLogoSelected($event)" hidden> -->
+    <input type="file"  id="logo" accept="image/*" (change)="onLogoSelected($event)" hidden>
+    <div *ngIf="imageError" style="color: #ff4877;">
+      {{ imageError }}
+    </div>
+        </label>
+        <div class="file-info" *ngIf="selectedFile">
+          {{ selectedFile.name }}
+          <button type="button" class="remove-btn" (click)="removeLogo()">✖</button>
+        </div>
+      </div>
+      </fieldset>
+    </div>
+
+    
+      <!-- Form Fields -->
+        <!-- Company Details -->
+      <!-- Registered Office Address -->
+
+
+
+      
+       <div class="middle-side-form">
+
+      <fieldset class="address-section">
+        <legend>Registered Office Address</legend>
+        
+        <div class="form-group2">
+          <label>Address Line 1 <span class="required">*</span></label>
+          <input type="text" formControlName="registeredOfficeAdd1" placeholder="Adress Line 1">
+        </div>
+
+        <div class="form-group2">
+          <label>Address Line 2</label>
+          <input type="text" formControlName="registeredOfficeAdd2" placeholder="Adress Line 2">
+        </div>
+
+        <div class="form-group2">
+          <label>Phone Number <span class="required">*</span></label>
+          <input type="tel" formControlName="registeredOfficePhone" placeholder="Enter phone number" maxlength="10"  pattern="[0-9]{10}">
+        
+            <div *ngIf="companyForm.get('registeredOfficePhone')?.invalid && companyForm.get('registeredOfficePhone')?.touched"
+            style="color: #ff4877;">
+            Please enter a valid Phone number.
+          </div>
+        </div>
+
+        <div class="form-group dual-column">
+          <!-- <div>
+            <label>Country Code <span class="required">*</span></label>
+            <select formControlName="registeredOfficeCountryCode" (change)="onCountryCodeChange('reg', $event)">
+              <option value="">Select Code</option>
+              <option *ngFor="let country of countries" [value]="country.code">{{ country.code }}</option>
+            </select>
+          </div> -->
+          <div class="form-group2">
+            <label>Country Name <span class="required">*</span></label>
+            <select formControlName="registeredOfficeCountrName" (change)="onCountryNameChange('reg', $event)" style="width: 87%;">
+              <option value="" selected>India</option>
+              <!-- <option value="">Select Country</option>
+              <option *ngFor="let country of countries" [value]="country.name">{{ country.name }}</option> -->
+            </select>
+          </div>
+
+
+          <div class="form-group2">
+            <div>
+              <label for="stateRegistered">State:<span class="required">*</span></label>
+              <select id="stateRegistered" formControlName="registeredOfficeState">
+                <option value="">-- Select State --</option>
+                <option *ngFor="let state of states" [value]="state">{{ state }}</option>
+              </select>
+            </div>
+            </div>
+        </div>
+
+        <div class="form-group dual-column">
+            
+           
+<!-- <div *ngIf="districts.length > 0"> -->
+<div >
+  <label for="districtRegistered">District:<span class="required">*</span></label>
+  <select id="districtRegistered" formControlName="registeredOfficeDistrict">
+    <option value="">-- Select District --</option>
+    <option *ngFor="let district of districts" [value]="district">{{ district }}</option>
+  </select>
+</div>
+
+
+
+          <div class="form-group2">
+            <label>Pincode <span class="required">*</span></label>
+            <input type="text" formControlName="registeredOfficePincode" placeholder="Enter pincode" maxlength="6">
+          </div>
+        </div>
+      </fieldset>
+       </div>
+
+
+
+       <div class="right-side-form">
+      <!-- Corporate Office Address -->
+      <fieldset class="address-section">
+        <legend>Corporate Office Address</legend>
+        
+        <div class="form-group3">
+          <label>Address Line 1 <span class="required">*</span></label>
+          <input type="text" formControlName="corporateOfficeAdd1" placeholder="Adress Line 1">
+        </div>
+
+        <div class="form-group3">
+          <label>Address Line 2</label>
+          <input type="text" formControlName="corporateOfficeAdd2" placeholder="Adress Line 2">
+        </div>
+
+        <div class="form-group3">
+          <label>Phone Number <span class="required">*</span></label>
+          <input type="tel" formControlName="corporateOfficePhone" placeholder="Enter phone number" maxlength="10"    pattern="[0-9]{10}">
+          <div *ngIf="companyForm.get('corporateOfficePhone')?.invalid && companyForm.get('corporateOfficePhone')?.touched"
+          style="color: #ff4877;">
+          Please enter a valid Phone number.
+        </div>
+        
+        </div>
+
+        <div class="form-group dual-column">
+          <!-- <div>
+            <label>Country Code <span class="required">*</span></label>
+            <select formControlName="corporateOfficeCountryCode" (change)="onCountryCodeChange('reg', $event)">
+              <option value="">Select Code</option>
+              <option *ngFor="let country of countries" [value]="country.code">{{ country.code }}</option>
+            </select>
+          </div> -->
+          <div class="form-group3">
+            <label>Country Name <span class="required">*</span></label>
+            <select formControlName="corporateOfficeCountryName" (change)="onCountryNameChange('reg', $event)">
+              <option value="" selected>India</option>
+              
+              <!-- <option *ngFor="let country of countries" [value]="country.name">{{ country.name }}</option> -->
+            </select>
+          </div>
+          <div class="form-group3">
+            
+            <div>
+              <label for="stateCorporate">State:<span class="required">*</span></label>
+              <select id="stateCorporate" formControlName="corporateOfficeState">
+                <option value="">-- Select State --</option>
+                <option *ngFor="let state of states" [value]="state">{{ state }}</option>
+              </select>
+            </div>
+
+
+          </div>
+
+        </div>
+
+        <div class="form-group dual-column">
+       
+          <div class="form-group3">
+           
+            <!-- <div *ngIf="Corporatedistricts.length > 0"> -->
+            <div >
+              <label for="districtCorporate">District:<span class="required">*</span></label>
+              <select id="districtCorporate" formControlName="corporateOfficeDistrict">
+                <option value="">-- Select District --</option>
+                <option *ngFor="let district of Corporatedistricts" [value]="district">{{ district }}</option>
+              </select>
+            </div>
+          
+          
+          
+          </div>
+          <div class="form-group3">
+            <label>Pincode <span class="required">*</span></label>
+            <input type="text" formControlName="corporateOfficePincode" placeholder="Enter pincode" maxlength="6">
+          </div>
+        </div>
+
+      </fieldset>
+    </div>
+
+        <button (click)="confirmBeforeSave()" class="submit-btn" width="50%" >
+          {{ isEditMode ? 'Update Company' : 'Create Company' }}
+          <!-- Save  -->
+        </button>
+    </form>
+  </div>
+  
+
+
+
+  
+  <!-- closing of main div container -->
+<!-- </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
