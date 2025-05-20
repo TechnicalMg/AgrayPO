@@ -6,10 +6,13 @@ import { PurchaseOrderService } from '../../services/purchase-order.service';
 import { ConsigneeDetails, ProductDetail, PurchaseOrderDto } from '../../models/purchase-order.dto';
 import { ApiResponse } from '../../models/api-response';
 import { environment } from '../../../environments/environment';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 // import { ApiResponse } from '../../models/api-response.model';
 @Component({
   selector: 'app-purchase-order',
-  imports: [FormsModule,CommonModule,ReactiveFormsModule],
+  imports: [FormsModule,CommonModule,ReactiveFormsModule, MatFormFieldModule,
+    MatSelectModule],
   templateUrl: './purchase-order.component.html',
   styleUrl: './purchase-order.component.css'
 })
@@ -25,6 +28,9 @@ export class PurchaseOrderComponent {
   // ];
 
   productDetails: any[] = [];
+  amcDetails: any[] = []; 
+  fmsDetails: any[]=[];
+  fmcDetails: any[]=[];
   consigneeDetails: any[] = [
     { name: '', address: '', phone: '', email: '' }
   ];
@@ -32,6 +38,8 @@ export class PurchaseOrderComponent {
   isGem: boolean = false;
   
 
+  orderTypes: string[] = ['Product', 'AMC', 'Product+AMC', 'FMS'];
+selectedOrderType: string = '';
 
 
 // rfp and bid
@@ -88,7 +96,7 @@ uploadBidFile() {
     if (!this.selectedFile) return;
 
     this.isLoading = true;
-    this.poService.uploadPdf(this.selectedFile).subscribe({
+    this.poService.uploadPdf(this.selectedFile,this.selectedOrderType).subscribe({
       next: (res) => {
         console.log(res.data);
         console.log(res.header);
@@ -112,6 +120,7 @@ uploadBidFile() {
             this.isGem=false;
                    
 this.consigneeDetails = res.data.consigneeDetails || [];
+
 
 console.log("consignee details",this.consigneeDetails);
         // Convert backend item list to productDetails table
@@ -143,6 +152,15 @@ console.log("consignee details",this.consigneeDetails);
   consignee: this.consigneeDetails[i] || {},
 
 }));
+  this.amcDetails=res.data.amcDetails||[];
+  this.fmsDetails=res.data.fmsDetails||[];
+//   this.amcDetails = (res.data.amcDetails || []).map((item: any) => ({
+//   // ...item,
+//   // servicestartDate: new Date(item.startDate),
+//   servicestartDate: (item.startDate),
+//   // serviceendDate: new Date(item.endDate)
+//   serviceendDate: (item.endDate)
+// }));
 
 this.poData = res.data;
           }
@@ -165,6 +183,111 @@ this.poData = res.data;
 
     });
   }
+
+
+
+
+
+
+// 100 % working perfect function
+
+//  uploadFile() {
+//     if (!this.selectedFile) return;
+
+//     this.isLoading = true;
+//     this.poService.uploadPdf(this.selectedFile,this.selectedOrderType).subscribe({
+//       next: (res) => {
+//         console.log(res.data);
+//         console.log(res.header);
+
+
+//         const gemPattern = /GEMC-\d+/;
+//       const dataStr = JSON.stringify(res.data); // convert object to string for regex search
+//       const isGem = gemPattern.test(dataStr);
+//       console.log("Extracted text",isGem);
+
+//         // this.headerText = res.isGemFile ? "GEM" : "Not a GEM File";
+//         this.headerText = isGem ? "GEM" : "Not a GEM File (Enter data manually:)";
+//         // console.log("header tet"+this.headerText);
+//         // if (res.isGemFile) this.poData = res.data;
+        
+
+
+
+//           if( this.headerText!="Not a GEM File (Enter data manually:)")
+//           {
+//             this.isGem=false;
+                   
+// this.consigneeDetails = res.data.consigneeDetails || [];
+
+
+// console.log("consignee details",this.consigneeDetails);
+//         // Convert backend item list to productDetails table
+//       this.productDetails = res.data.items?.map((item: any) => ({
+//         description: `${item.productName} ,(${item.model})  ,(${item.brandType}) ,(${item.catalogueStatus}), (${item.sellingAs}),(${item.brand}) ,(${item.hsnCode}) `, // Combine name & model
+//         quantity: item.quantity,
+//         productName:item.productName,
+//         brand:item.brand,
+//         model:item.model,
+//         brandType:item.brandType,
+//         catalogueStatus:item.catalogueStatus,
+//         sellingAs:item.sellingAs,
+//         categoryNameQaudrant:item.categoryNameQaudrant,
+//         hsnCode:item.hsnCode,
+        
+//         // unit: item.quantity?.split(' ')[1] || '', // Extract 'pieces' from "2 pieces"
+//         unit: item.unit, // Extract 'pieces' from "2 pieces"
+//         unitPrice: item.unitPrice,
+//         tax: item.tax,
+//         totalPrice: item.totalPrice,
+
+//         // adding product details to consignee details
+        
+
+//       })) || [];
+
+//       this.mergedRows = this.productDetails.map((product, i) => ({
+//   product,
+//   consignee: this.consigneeDetails[i] || {},
+
+// }));
+//   this.amcDetails=res.data.amcDetails||[];
+//   this.fmsDetails=res.data.fmsDetails||[];
+// //   this.amcDetails = (res.data.amcDetails || []).map((item: any) => ({
+// //   // ...item,
+// //   // servicestartDate: new Date(item.startDate),
+// //   servicestartDate: (item.startDate),
+// //   // serviceendDate: new Date(item.endDate)
+// //   serviceendDate: (item.endDate)
+// // }));
+
+// this.poData = res.data;
+//           }
+//           if( this.headerText=="Not a GEM File (Enter data manually:)")
+//           {
+//             this.isGem=true;
+//             console.log("not a gem coming in if condition true , its not a gem file");
+//             this.clearForm();
+//           }
+//     // this.poData = res.data;
+ 
+//       console.log("product details",this.productDetails);
+//       console.log("res data",res);
+//          this.isLoading = false;
+//       },
+//       error: (err) => {console.error(err);
+//         this.isLoading = false;
+//       }
+
+
+//     });
+//   }
+// this ends here
+
+
+
+
+
 
   printConsignee()
   {

@@ -15,9 +15,10 @@ private apiUrl =   environment.apiBaseUrl+'/api/purchase-order';
 
   constructor(private http: HttpClient) {}
 
-  uploadPdf(file: File): Observable<any> {
+  uploadPdf(file: File,poType:string): Observable<any> {
     const formData = new FormData();
     formData.append('file', file);
+    formData.append('poType', poType);
     return this.http.post(`${this.apiUrl}/upload`, formData);
   }
 

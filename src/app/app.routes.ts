@@ -27,6 +27,8 @@ import { ViewPurchaseOrderComponent } from './components/view-purchase-order/vie
 import { UserDashboardHomeComponent } from './components/user-dashboard-home/user-dashboard-home.component';
 import { TestDesignComponent } from './components/test-design/test-design.component';
 import { ViewUpdateUserComponent } from './components/admin-dashboard/dashboard-admin/components/User/view-update-user/view-update-user.component';
+import { PoGenerationComponent } from './components/po-generation/po-generation.component';
+import { DistributorRegistrationComponent } from './components/distributor-registration/distributor-registration.component';
 
 
 export const routes: Routes = [
@@ -78,7 +80,9 @@ export const routes: Routes = [
       children:[
       {path:'purchase-order',component:PurchaseOrderComponent},
       {path:'view-purchase-order',component:ViewPurchaseOrderComponent}, 
-      {path:'user-dashboard-home',component:UserDashboardHomeComponent}
+      {path:'user-dashboard-home',component:UserDashboardHomeComponent},
+       {path:'purchase-order-create',component:PoGenerationComponent},
+       {path:'distributor-create',component:DistributorRegistrationComponent}
       ]
 
     },

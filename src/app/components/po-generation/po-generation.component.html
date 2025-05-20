@@ -1,0 +1,98 @@
+<div class="po-container">
+  <h2>PO Generation Form</h2>
+
+  <!-- Form Grid -->
+  <div class="form-grid">
+    <label>GEM PO Number</label>
+    <select [(ngModel)]="form.selectedGemPo" (change)="onGemPoChange()">
+      <option value="">-- Select GEM PO Number --</option>
+      <option *ngFor="let po of gemPoNumbers" [value]="po">{{ po }}</option>
+    </select>
+
+    <label>Item</label>
+    <select [(ngModel)]="form.selectedItem">
+      <option value="">-- Select Item --</option>
+      <option *ngFor="let item of itemsAndModels" [value]="item.item">{{ item.item }}</option>
+    </select>
+
+    <label>Model</label>
+    <select [(ngModel)]="form.selectedModel">
+      <option value="">-- Select Model --</option>
+      <option *ngFor="let item of itemsAndModels" [value]="item.model">{{ item.model }}</option>
+    </select>
+
+    <label>Distributor</label>
+    <select [(ngModel)]="form.selectedDistributor">
+      <option value="">-- Select Distributor --</option>
+      <option *ngFor="let dist of distributors" [value]="dist">{{ dist }}</option>
+    </select>
+
+    <label>OEM</label>
+    <select [(ngModel)]="form.selectedOem">
+      <option value="">-- Select OEM --</option>
+      <option *ngFor="let oem of oems" [value]="oem">{{ oem }}</option>
+    </select>
+
+    <label>Date</label>
+    <input type="date" [(ngModel)]="form.selectedDate" />
+
+    <label>Created By</label>
+    <input type="text" [(ngModel)]="form.createdBy" placeholder="Enter your name" />
+  </div>
+
+  <!-- Custom Column Adder -->
+  <div class="custom-column-box">
+    <label style="color: black;">Add Custom Column</label>
+    <input type="text" [(ngModel)]="customColumnInput" placeholder="e.g., Remarks" />
+    <button (click)="addCustomColumn()">Add Column</button>
+
+    <div class="tag-list">
+      <span *ngFor="let col of customColumns" class="tag">
+        {{ col }}
+        <button (click)="removeCustomColumn(col)">x</button>
+      </span>
+    </div>
+  </div>
+
+  <!-- Input fields for custom columns -->
+  <div class="form-grid">
+    <div *ngFor="let col of customColumns">
+      <label>{{ col }}</label>
+      <input type="text" [(ngModel)]="form[col]" placeholder="Enter {{ col }}" />
+    </div>
+  </div>
+
+  <!-- Submit Button -->
+  <button class="submit-btn" (click)="submit()">Submit</button>
+
+  <!-- Submitted Entries -->
+  <h3 *ngIf="submittedEntries.length">Submitted Entries</h3>
+  <table *ngIf="submittedEntries.length" class="summary-table">
+    <thead>
+      <tr>
+        <th>GEM PO</th>
+        <th>Item</th>
+        <th>Model</th>
+        <th>Distributor</th>
+        <th>OEM</th>
+        <th>Date</th>
+        <th>Created By</th>
+        <th *ngFor="let col of customColumns">{{ col }}</th>
+        <th>Timestamp</th>
+      </tr>
+    </thead>
+    <tbody style="color: blue; font-weight: bold;text-align: center;" [attr.contenteditable]="true">
+      <tr *ngFor="let entry of submittedEntries">
+        <td>{{ entry.selectedGemPo }}</td>
+        <td>{{ entry.selectedItem }}</td>
+        <td>{{ entry.selectedModel }}</td>
+        <td>{{ entry.selectedDistributor }}</td>
+        <td>{{ entry.selectedOem }}</td>
+        <td>{{ entry.selectedDate }}</td>
+        <td>{{ entry.createdBy }}</td>
+        <td *ngFor="let col of customColumns">{{ entry[col] }}</td>
+        <td>{{ entry.timestamp }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

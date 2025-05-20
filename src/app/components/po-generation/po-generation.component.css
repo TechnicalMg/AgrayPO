@@ -1,0 +1,118 @@
+.po-container {
+  max-width: 1000px;
+  margin: 30px auto;
+  background-color: #e7f0fb;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 90, 160, 0.2);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+h2, h3 {
+  text-align: center;
+  color: #0056b3;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.form-grid label {
+  font-weight: bold;
+  color: #003366;
+}
+
+.form-grid input,
+.form-grid select {
+  padding: 8px;
+  border: 1px solid #aad1f1;
+  border-radius: 6px;
+  background-color: #fff;
+}
+
+.custom-column-box {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #d2e6fa;
+  border-radius: 8px;
+}
+
+.custom-column-box input {
+  padding: 8px;
+  margin-right: 10px;
+  width: 250px;
+}
+
+.custom-column-box button {
+  padding: 8px 12px;
+  background-color: #0056b3;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.custom-column-box button:hover {
+  background-color: #003d80;
+}
+
+.tag-list {
+  margin-top: 15px;
+}
+
+.tag {
+  display: inline-block;
+  background-color: #007bff;
+  color: white;
+  padding: 6px 12px;
+  margin: 5px 5px 0 0;
+  border-radius: 16px;
+  font-size: 14px;
+}
+
+.tag button {
+  background: none;
+  border: none;
+  color: white;
+  margin-left: 6px;
+  cursor: pointer;
+}
+
+.submit-btn {
+  display: block;
+  margin: 30px auto 10px;
+  background-color: #0066cc;
+  color: white;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: #004a99;
+}
+
+.summary-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: white;
+}
+
+.summary-table th,
+.summary-table td {
+  padding: 10px;
+  border: 1px solid #cce0f5;
+  text-align: center;
+}
+
+.summary-table th {
+  background-color: #cce5ff;
+  color: #003366;
+}

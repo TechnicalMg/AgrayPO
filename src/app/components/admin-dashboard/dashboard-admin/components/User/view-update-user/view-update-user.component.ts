@@ -26,6 +26,8 @@ export class ViewUpdateUserComponent implements OnInit{
   maindb ='ignitia_db';
   passwordError = '';
   currentPassword = '';
+  newUserPassword = '';
+  newUserConfirmPassword = '';
   showChangePassword = false;
 
   toggleChangePassword() {
@@ -99,8 +101,8 @@ showUserId()
 
  onSubmit() {
 
-    console.log("currentPassword",this.currentPassword);
-    console.log("user Password",this.user.password);
+    console.log("currentPassword entered",this.currentPassword);
+    console.log("user Password from db",this.user.password);
 
   // if (this.currentPassword == this.user.Password) {
   //   alert('Passwords is invalid');
@@ -113,10 +115,26 @@ showUserId()
   }
 
 
+
+  if(this.currentPassword === this.user.password)
+  {
+    console.log("password matched");
+  }
+  else{
+     alert('Password is incorrect');
+    return;
+  }
+
+
 if(this.showChangePassword === true)
 {
-  if (this.user.password !== this.user.confirmPassword) {
-    alert('Passwords do not match');
+  console.log("newUserPassword",this.newUserPassword);
+  console.log("newUserConfirmPassword",this.newUserConfirmPassword);
+  if (this.newUserPassword === this.newUserConfirmPassword) {
+   
+  }
+  else{
+ alert('New Passwords do not match');
     return;
   }
 }
@@ -139,13 +157,18 @@ if(this.showChangePassword === true)
     userName: this.user.userName,
     designation: this.user.designation,
     phoneNumber: this.user.phoneNumber,
-    currentPassword: this.currentPassword
+    currentPassword: this.currentPassword,
+
+    // userPassword:this.user.password,
   };
 
   // If Change Password is toggled
   if (this.showChangePassword) {
-    if (this.user.password !== this.user.confirmPassword) {
-      alert('Passwords do not match');
+    if (this.newUserPassword === this.newUserConfirmPassword) {
+     
+    }
+    else{
+       alert(' New Passwords do not match');
       return;
     }
 
@@ -154,8 +177,14 @@ if(this.showChangePassword === true)
       return;
     }
 
-    requestPayload.newPassword = this.user.password;
+    // requestPayload.newPassword = this.newUserPassword;
+    requestPayload.password = this.newUserPassword;
   }
+  else{
+    requestPayload.password = this.user.password;
+  }
+
+  console.log("request payload",requestPayload.newPassword);
 
 
     // this.http.post(`${environment.apiBaseUrl}/api/users/create`, this.user, {
@@ -163,15 +192,7 @@ if(this.showChangePassword === true)
       headers: this.getDbHeaders()
     }).subscribe({
     next: (res) => {alert('User Updated')
-      // this.user = {
-      //   userName: '',
-      //   designation: '',
-      //   phoneCode: '',
-      //   phoneNumber: '',
-      //   password: '',
-      //   confirmPassword: '',
-      //   email: ''
-      // };
+     
       this.passwordError = '';
      },
     error: (err) => alert('Error: ' + err.message)

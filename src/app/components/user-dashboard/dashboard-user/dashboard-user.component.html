@@ -35,9 +35,20 @@
           <a mat-list-item routerLink="/dashboard-user/view-purchase-order" class="submenu-link">
             <span class="submenu-text">View PO</span>
           </a>
+
+
         </div>
       </div>
 
+ <a mat-list-item routerLink="/dashboard-user/purchase-order-create" matTooltip="Purchase Order">
+        <img src="assets/user-dashboard-icons/ecommerce.png" alt="PO" class="nav-icon" />
+        <span *ngIf="isExpanded" class="nav-text">Generating PO</span>
+      </a>
+      
+ <a mat-list-item routerLink="/dashboard-user/distributor-create" matTooltip="Purchase Order">
+        <img src="assets/user-dashboard-icons/ecommerce.png" alt="PO" class="nav-icon" />
+        <span *ngIf="isExpanded" class="nav-text">Distibutor Registration</span>
+      </a>
 
 
 

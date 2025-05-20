@@ -16,6 +16,16 @@ export interface ProductDetail {
 }
 
 
+export interface AmcDetails {
+   description: string;
+  quantity: string;
+  uniPrice: string;
+  serviceStartDate: string;
+  serviceEndDate: string;
+  
+    // Add any other properties that might be needed for product details
+}
+
 export interface ConsigneeDetails {
    consigneeDetails: string;
   item: string;

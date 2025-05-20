@@ -37,13 +37,13 @@
       <div *ngIf="showChangePassword">
         <div class="form-group">
           <label>New Password <span class="required">*</span></label>
-          <input type="password" [(ngModel)]="user.password" (blur)="validatePassword()" placeholder="New Password" class="form-control" />
+          <input type="password" [(ngModel)]="newUserPassword" (blur)="validatePassword()" placeholder="New Password" class="form-control" />
           <p style="color: #ff4877;" *ngIf="passwordError">{{ passwordError }}</p>
         </div>
 
         <div class="form-group">
           <label>Confirm New Password <span class="required">*</span></label>
-          <input type="password" [(ngModel)]="user.confirmPassword" placeholder="Confirm New Password" class="form-control" />
+          <input type="password" [(ngModel)]="newUserConfirmPassword" placeholder="Confirm New Password" class="form-control" />
         </div>
       </div>
 

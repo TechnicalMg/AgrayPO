@@ -16,6 +16,18 @@
   </div>
 
   <div class="upload-section" style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;">
+    
+    <mat-form-field appearance="fill">
+  <mat-label>Order Type</mat-label>
+  <mat-select [(ngModel)]="selectedOrderType" name="orderType" required>
+    <mat-option *ngFor="let type of orderTypes" [value]="type">
+      {{ type }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+   
+   
+   
     <label for="fileUpload" style="font-size: 0.9rem; font-weight: 500; color: black;">Upload PDF:</label>
     <input 
       type="file" 
@@ -248,7 +260,7 @@
      <div style="overflow: auto; max-height: 500px; max-width: 100%;">
       <div class="custom-table-container">
         <h3>Product Details</h3>
-        <table class="custom-table">
+        <table   *ngIf="selectedOrderType === 'Product' || selectedOrderType === 'Product+AMC'"class="custom-table">
           <thead>
             <tr>
               <th>Serial No.</th>
@@ -295,6 +307,137 @@
           </tbody>
         </table>
          <button *ngIf="isGem" (click)="addRow()" class="add-row-btn">+ Add Row</button>
+       
+         <br>
+         <br>
+         <br><br>
+         <ng-container *ngIf="selectedOrderType === 'AMC' || selectedOrderType === 'Product+AMC'">
+         <div  *ngFor="let amc of amcDetails; let i = index">
+         <label for="startDate" style="color: black;">Service Start Date</label>
+         <input type="text" placeholder="Service Start Date" [ngModel]="amc.startDate"  name="startDate{{i}}" readonly>
+
+         <br>
+         <label for="startDate" style="color: black;">Service End Date</label>---
+         <input type="text" placeholder="Service End Date" [ngModel]="amc.endDate" name="endDate{{i}}" readonly>
+         </div>
+          <table   *ngIf="selectedOrderType === 'AMC' || selectedOrderType === 'Product+AMC' "class="custom-table">
+          <thead>
+            <tr>
+              <th>Serial No.</th>
+              <!-- <th>Item Description</th> -->
+               <th>Description</th>
+               <th>Quantity of Product/Equipment</th>
+               <th> Consolidated Unit Price for AMC/CMC</th>
+               <!-- <th>catalogue Status</th>
+               <th>Selling AS</th>
+               <th>Category Name & Quadrant</th>
+               <th>Model</th>
+               <th>HSN Code</th> -->
+               
+               
+              <!-- <th>Order Quantity</th>
+              <th>Unit</th>
+              <th>Unit Price</th>
+              <th>Tax Bifurcation</th>
+              <th>Price</th> -->
+              <th *ngIf="isGem">Action</th>
+            </tr>
+          </thead>
+          <tbody [attr.contenteditable]="true">
+            <tr *ngFor="let item of amcDetails; let i = index">
+              <td>{{ i + 1 }}</td>
+              <!-- <td>{{ item.description }}</td> -->
+
+              <td>{{ item.majorCategoryofAssets }} , {{item.makeBrandOfAssets}},{{item.onSiteService}}
+                {{item.periodicityOfPreventive}},{{item.statusOfAnnualMaintaince}},{{item.typeOfAsset}}
+                {{item.district}},{{item.zipcode}}
+              </td>
+              <td>{{ item.quantity }}</td>
+              <td>{{ item.costPerEquipment }}</td>
+              <!-- <td>{{ item.catalogueStatus }}</td>
+              <td>{{ item.sellingAs }}</td>
+              <td>{{item.categoryNameQaudrant}}</td>
+              <td>{{ item.model }}</td>
+              <td>{{ item.hsnCode }}</td>
+
+              <td>{{ item.quantity }}</td>
+              <td>{{ item.unit }}</td>
+              <td>{{ item.unitPrice }}</td>
+              <td>{{ item.taxBifurcation }}NA</td>
+              <td>{{ item.totalPrice }}</td> -->
+              <td  *ngIf="isGem"> <button (click)="removeRow(i)" class="remove-row-btn">Remove</button></td>
+            </tr>
+          </tbody>
+        </table>
+       </ng-container>
+       
+<!-- FMS Table  -->
+<ng-container *ngIf="selectedOrderType === 'FMS' ">
+         <!-- <div  *ngFor="let amc of fmsDetails; let i = index"> -->
+         <div  *ngFor="let fms of fmsDetails; ">
+          
+         <label for="startDate" style="color: black;">Service Start Date</label>
+         <input type="text" placeholder="Service Start Date" [ngModel]="fms.startDate"   readonly>
+
+         <br>
+         <label for="startDate" style="color: black;">Service End Date</label>---
+         <input type="text" placeholder="Service End Date" [ngModel]="fms.endDate"  readonly>
+         </div>
+          <table  class="custom-table">
+          <thead>
+            <tr>
+              <th>Serial No.</th>
+              <!-- <th>Item Description</th> -->
+               <th>ManPower Required </th>
+               <th>Product Category</th>
+               <th>Type of service</th>
+               <th> Product Brand </th>
+               <th>Preventive Maintenance Frequency</th>
+               <th> Number of months service is required</th>
+               <th>Qty of product/equipment</th>
+               <th> Consolidated Price for AMC/CMC </th>
+               
+           
+              <th *ngIf="isGem">Action</th>
+            </tr>
+          </thead>
+          <tbody [attr.contenteditable]="true">
+            <tr *ngFor="let item of fmsDetails; let i = index">
+              <td>{{ i + 1 }}</td>
+              <!-- <td>{{ item.description }}</td> -->
+
+              <td>{{ item.manpowerRequired }}</td>
+              <td>{{ item.productCategory }}</td>
+              <td>{{ item.typeOfService }}</td>
+              <td>{{item.productBrand}}</td>
+              <td>{{ item.preventiveMaintenanceFrequency }}</td>
+              <td>{{ item.noOfMonthsService }}</td>
+              <td>{{ item.quantity }}</td>
+              <td>{{ item.consolidatedUnitPrice }}</td>
+            
+
+              <!-- <td>{{ item.catalogueStatus }}</td>
+              <td>{{ item.sellingAs }}</td>
+              <td>{{item.categoryNameQaudrant}}</td>
+              <td>{{ item.model }}</td>
+              <td>{{ item.hsnCode }}</td>
+
+              <td>{{ item.quantity }}</td>
+              <td>{{ item.unit }}</td>
+              <td>{{ item.unitPrice }}</td>
+              <td>{{ item.taxBifurcation }}NA</td>
+              <td>{{ item.totalPrice }}</td> -->
+              <td  *ngIf="isGem"> <button (click)="removeRow(i)" class="remove-row-btn">Remove</button></td>
+            </tr>
+          </tbody>
+        </table>
+       </ng-container>
+
+       
+       
+       
+       
+       
         </div>
       </div>
     

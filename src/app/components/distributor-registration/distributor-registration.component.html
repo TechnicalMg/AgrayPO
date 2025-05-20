@@ -1,0 +1,62 @@
+<p>distributor-registration works!</p>
+<div class="dist-container">
+  <h2>Distributor Registration</h2>
+
+  <div class="form-grid">
+    <label>Distributor Name</label>
+    <input type="text" [(ngModel)]="distributorForm.name" placeholder="Enter distributor name" />
+
+    <label>GSTIN</label>
+    <input type="text" [(ngModel)]="distributorForm.gstin" placeholder="Enter GSTIN" />
+
+    <label>PAN</label>
+    <input type="text" [(ngModel)]="distributorForm.pan" placeholder="Enter PAN" />
+
+    <label>Email ID</label>
+    <input type="email" [(ngModel)]="distributorForm.email" placeholder="Enter email" />
+
+    <label>Contact Person Name</label>
+    <input type="text" [(ngModel)]="distributorForm.contactPerson" placeholder="Enter contact person" />
+
+    <label>Address</label>
+    <input type="text" [(ngModel)]="distributorForm.address" placeholder="Enter address" />
+
+    <label>Designation</label>
+    <input type="text" [(ngModel)]="distributorForm.designation" placeholder="Enter designation" />
+
+    <label>Contact Number</label>
+    <input type="text" [(ngModel)]="distributorForm.contactNumber" placeholder="Enter contact number" />
+  </div>
+
+  <button class="submit-btn" (click)="submitForm()">Register Distributor</button>
+
+  <h3 *ngIf="registeredDistributors.length">Registered Distributors</h3>
+  <table *ngIf="registeredDistributors.length" class="summary-table">
+    <thead>
+      <tr>
+        <th>S.No</th>
+        <th>Distributor Name</th>
+        <th>GSTIN</th>
+        <th>PAN</th>
+        <th>Email ID</th>
+        <th>Contact Person</th>
+        <th>Address</th>
+        <th>Designation</th>
+        <th>Contact No.</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let dist of registeredDistributors">
+        <td>{{ dist.sno }}</td>
+        <td>{{ dist.name }}</td>
+        <td>{{ dist.gstin }}</td>
+        <td>{{ dist.pan }}</td>
+        <td>{{ dist.email }}</td>
+        <td>{{ dist.contactPerson }}</td>
+        <td>{{ dist.address }}</td>
+        <td>{{ dist.designation }}</td>
+        <td>{{ dist.contactNumber }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
